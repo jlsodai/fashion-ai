@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FashionAI - Your Personal Fashion Agent
+
+An AI-powered fashion shopping experience built with Next.js 16, featuring an intelligent style assistant that helps curate personalized outfit recommendations.
+
+![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black)
+![React](https://img.shields.io/badge/React-19.2.3-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC)
+
+## Features
+
+- 🤖 **AI Fashion Assistant** - Conversational interface to describe your style preferences
+- 🎨 **Smart Filtering** - Filter by price, color, size, category, and brand
+- 🛍️ **Product Catalog** - Curated collection of dresses, casual wear, and workwear
+- 🛒 **Shopping Cart** - Full e-commerce cart and checkout experience
+- 🌓 **Dark/Light Mode** - Theme support with next-themes
+- 📱 **Responsive Design** - Resizable chat panel with mobile support
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) + Radix UI primitives
+- **Icons**: Lucide React
+- **Theming**: next-themes
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd fashion
+
+# Install dependencies
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+fashion/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx          # Root layout with theme provider
+│   ├── page.tsx            # Main page with FashionAgent
+│   └── globals.css         # Global styles and CSS variables
+├── components/
+│   ├── ui/                 # shadcn/ui components
+│   ├── fashion-agent.tsx   # Main agent component
+│   ├── chat-panel.tsx      # AI chat interface
+│   ├── products-panel.tsx  # Product grid display
+│   ├── product-detail-modal.tsx
+│   ├── cart-sidebar.tsx    # Shopping cart
+│   └── checkout-modal.tsx  # Checkout flow
+├── hooks/                  # Custom React hooks
+├── lib/                    # Utilities
+├── public/                 # Product images & assets
+└── styles/                 # Additional styles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable                     | Description                   | Default |
+| ---------------------------- | ----------------------------- | ------- |
+| `NEXT_PUBLIC_ECOMMERCE_MODE` | Cart mode: `full` or `browse` | `full`  |
 
-## Deploy on Vercel
+## Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Script          | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Build for production     |
+| `npm start`     | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## UI Components
+
+This project uses [shadcn/ui](https://ui.shadcn.com/) components built on Radix UI primitives:
+
+- Accordion, Alert Dialog, Avatar, Badge
+- Button, Card, Checkbox, Dialog
+- Dropdown Menu, Form, Input, Label
+- Popover, Select, Sheet, Slider
+- Tabs, Toast, Tooltip, and more
+
+## License
+
+MIT
