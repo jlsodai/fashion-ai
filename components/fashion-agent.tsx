@@ -8,6 +8,7 @@ import CartSidebar from "./cart-sidebar"
 import CheckoutModal from "./checkout-modal"
 import { ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "./theme-toggle"
 
 export type Message = {
   id: string
@@ -49,7 +50,7 @@ export type Filters = {
   brands: string[]
 }
 
-export default function FashionAgent() {
+export default function FashionAgent({ initialQuery }: { initialQuery?: string }) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -114,6 +115,12 @@ export default function FashionAgent() {
       document.removeEventListener("mouseup", handleMouseUp)
     }
   }, [isResizing])
+
+  useEffect(() => {
+    if (initialQuery && initialQuery.trim()) {
+      handleSendMessage(initialQuery)
+    }
+  }, [initialQuery])
 
   useEffect(() => {
     if (allProducts.length === 0) {
@@ -364,10 +371,13 @@ export default function FashionAgent() {
       )}
 
       {ecommerceMode === "full" && (
-        <Button onClick={() => setIsCartOpen(true)} className="fixed top-4 right-4 z-30 gap-2 shadow-lg" size="lg">
-          <ShoppingBag className="w-5 h-5" />
-          Cart ({cart.length})
-        </Button>
+        <div className="fixed top-4 right-4 z-30 flex items-center gap-2">
+          <ThemeToggle />
+          <Button onClick={() => setIsCartOpen(true)} className="gap-2 shadow-lg" size="lg">
+            <ShoppingBag className="w-5 h-5" />
+            Cart ({cart.length})
+          </Button>
+        </div>
       )}
 
       {ecommerceMode === "full" && (
@@ -685,7 +695,7 @@ const DRESS_PRODUCTS: Product[] = [
     category: "Dresses",
     image: "/embroidered-cocktail-dress.jpg",
     brand: "ATELIER",
-    colors: ["blue", "black"],
+    colors: ["White", "Navy"],
     sizes: ["S", "M", "L", "XL"],
     description:
       "Stunning cocktail dress featuring intricate embroidery. The detailed craftsmanship and fitted silhouette create a show-stopping look.",
@@ -701,7 +711,7 @@ const DRESS_PRODUCTS: Product[] = [
     category: "Dresses",
     image: "/asymmetric-hem-dress.jpg",
     brand: "MODERNE",
-    colors: ["Purple", "Black"],
+    colors: ["Black", "Red"],
     sizes: ["XS", "S", "M", "L", "XL"],
     description:
       "Contemporary dress with an eye-catching asymmetric hem. The modern cut and flowing fabric create dynamic movement.",
