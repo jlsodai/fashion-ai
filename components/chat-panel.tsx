@@ -120,8 +120,8 @@ export default function ChatPanel({
 
       <div className="flex-1 overflow-y-auto px-6 py-6">
         <div className="space-y-6">
-          {messages.map((message) => (
-            <div key={message.id}>
+          {messages.map((message, i) => (
+            <div key={i}>
               <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-3 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
@@ -168,8 +168,8 @@ export default function ChatPanel({
             <div className="flex justify-start">
               <div className="bg-muted rounded-2xl px-4 py-3 max-w-[85%]">
                 <div className="space-y-2">
-                  {thinkingSteps.map((step) => (
-                    <div key={step.id} className="flex items-start gap-2 text-sm">
+                  {thinkingSteps.map((step, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm">
                       {step.status === "thinking" ? (
                         <Loader2 className="w-4 h-4 mt-0.5 animate-spin flex-shrink-0 text-primary" />
                       ) : (
@@ -323,8 +323,8 @@ function FilterPromptComponent({
             </div>
             <Slider
               value={localPriceRange}
-              onValueChange={(value: number[]) => setLocalPriceRange(value as [number, number])}
-              onValueCommit={(value: number[]) => onPriceSelect(value as [number, number])}
+              onValueChange={(value) => setLocalPriceRange(value as [number, number])}
+              onValueCommit={(value) => onPriceSelect(value as [number, number])}
               min={0}
               max={1000}
               step={50}
